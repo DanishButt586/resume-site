@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danish Butt - Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background Dots -->
+    <div class="animated-bg" aria-hidden="true"></div>
+    <!-- Hero Banner Background -->
+    <div class="hero-banner" aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 100vw; height: 340px; background: linear-gradient(120deg, #5e5ee5 0%, #b3b3ff 100%); opacity: 0.18; z-index: 0; border-bottom-left-radius: 48px; border-bottom-right-radius: 48px; box-shadow: 0 8px 32px #5e5ee522;"></div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">Danish Butt</div>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" title="Toggle dark/light mode">🌙</button>
+        </div>
+        <div class="nav-overlay" id="nav-overlay"></div>
+    </nav>
+
+
+    <!-- Profile Section (Hero) -->
+    <section id="profile" class="section profile-section" aria-label="Profile" role="region">
+        <div class="container profile-container profile-container-rel">
+            <div class="profile-hero">
+                <img src="images/img.jpg" alt="Danish Butt profile photo" class="profile-photo profile-photo-hero" loading="lazy" style="object-fit:cover; width:140px; height:140px; border-radius:50%; border:4px solid #5e5ee5; box-shadow:0 4px 16px rgba(30,30,47,0.2); background:#fff;">
+                <div class="profile-info profile-info-max">
+                    <h1 class="hero-animate profile-title-main">
+                        <span class="profile-name-flex">
+                            <span class="profile-name">Danish Butt</span>
+                            <span class="wave profile-wave" aria-label="Waving hand">👋</span>
+                        </span>
+                    </h1>
+                    <h2 class="profile-role"><span id="typed-title">Full Stack Developer</span></h2>
+                    <p class="profile-summary">Passionate developer with <span class="counter" data-count="2">0</span>+ years of experience building scalable web applications. Adept at problem-solving and delivering high-quality solutions. <span class="profile-summary-highlight">Let's build something amazing together!</span></p>
+                    <div class="profile-actions profile-actions-hero">
+                        <a href="#contact" class="btn primary-btn cta-btn" aria-label="Contact Me">Let's Connect</a>
+                        <a href="resume.pdf" class="btn secondary-btn" download aria-label="Download CV">Download CV</a>
+                    </div>
+                    <div class="profile-socials">
+                        <span class="profile-socials-label">Find me on:</span>
+                        <a href="https://www.linkedin.com/in/danish-butt-b41090369/" target="_blank" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="profile-social-icon"></a>
+                        <a href="https://github.com/DanishButt586" target="_blank" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="profile-social-icon"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section glass-section">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" style="width:1.3em;height:1.3em;"></span>
+                    <h3>Senior Developer <span>@ TechCorp</span></h3>
+                    <span class="years">2022 - Present</span>
+                    <p>Lead a team of developers to build enterprise-level SaaS products using modern JavaScript frameworks and cloud technologies.</p>
+                </div>
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" style="width:1.3em;height:1.3em;"></span>
+                    <h3>Frontend Engineer <span>@ Webify</span></h3>
+                    <span class="years">2019 - 2022</span>
+                    <p>Developed responsive user interfaces and improved site performance for e-commerce platforms.</p>
+                </div>
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width:1.3em;height:1.3em;"></span>
+                    <h3>Junior Developer <span>@ DevStart</span></h3>
+                    <span class="years">2017 - 2019</span>
+                    <p>Assisted in building web applications and maintained legacy codebases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section glass-section">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="timeline education-timeline">
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon" style="background:#fffbe7;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="School" style="width:1.3em;height:1.3em;">
+                    </span>
+                    <h3>Matriculation <span>@ Federal Public School (Sher Shah Road), Multan Cantt</span></h3>
+                    <span class="years">2019 - 2020</span>
+                    <p>Completed Matriculation with a strong foundation in science and mathematics.</p>
+                </div>
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon" style="background:#e7f7ff;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="College" style="width:1.3em;height:1.3em;">
+                    </span>
+                    <h3>FSc. (Pre-Engineering) <span>@ Punjab Group of Colleges, Multan</span></h3>
+                    <span class="years">2021 - 2022</span>
+                    <p>Studied Pre-Engineering with a focus on Physics, Chemistry, and Mathematics.</p>
+                </div>
+                <div class="timeline-item reveal" tabindex="0">
+                    <span class="timeline-icon" style="background:#e7ffe7;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135765.png" alt="University" style="width:1.3em;height:1.3em;">
+                    </span>
+                    <h3>BS in Computer Science <span>@ Air University Multan Campus</span></h3>
+                    <span class="years">2023 - 2027 <span class="edu-status ongoing">(In Progress)</span></span>
+                    <p>Pursuing a Bachelor's degree in Computer Science, learning advanced programming, algorithms, and software engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" aria-label="Skills" role="region">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon"> JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="90%" style="width: 90%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">ES6+, DOM, Async, OOP, Fetch API</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="skill-icon"> HTML5</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="95%" style="width: 95%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Semantic HTML, Accessibility, SEO</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="skill-icon"> CSS3</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="90%" style="width: 90%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Flexbox, Grid, Animations, Responsive</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-icon"> React</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="85%" style="width: 85%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Hooks, Context, SPA, JSX</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="skill-icon"> Node.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="80%" style="width: 80%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Express, REST API, Auth, MongoDB</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-icon"> Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="75%" style="width: 75%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Scripting, Data, Flask, Automation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Proficiency Section -->
+    <section id="languages" class="section glass-section" aria-label="Languages" role="region">
+        <div class="container">
+            <h2>Languages</h2>
+            <div class="skills-list">
+                <div class="skill" tabindex="0">
+                    <span><span class="skill-icon-text">English</span></span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="98%" style="width: 98%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Native/Bilingual</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><span class="skill-icon-text">Urdu</span></span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="95%" style="width: 95%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Native</div>
+                </div>
+                <div class="skill" tabindex="0">
+                    <span><span class="skill-icon-text">Punjabi</span></span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-label="80%" style="width: 80%; background: linear-gradient(90deg,#5e5ee5,#b3b3ff);"></div>
+                    </div>
+                    <div class="skill-tooltip">Fluent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-list">
+                <div class="project-item" tabindex="0" data-title="Portfolio Website" data-desc="Personal portfolio website showcasing projects and skills. Built with HTML, CSS, and JavaScript." data-link="https://github.com/johndoe/portfolio">
+                    <h3><a href="https://github.com/johndoe/portfolio" target="_blank">Portfolio Website</a></h3>
+                    <p>Personal portfolio website showcasing projects and skills. Built with HTML, CSS, and JavaScript.</p>
+                    <div class="project-tech" aria-label="Technologies used" style="display:flex;gap:0.7em;margin-top:0.5em;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" style="width:24px;">
+                    </div>
+                </div>
+                <div class="project-item" tabindex="0" data-title="Task Manager App" data-desc="Full-stack task management app with user authentication and real-time updates." data-link="https://github.com/johndoe/taskapp">
+                    <h3><a href="https://github.com/johndoe/taskapp" target="_blank">Task Manager App</a></h3>
+                    <p>Full-stack task management app with user authentication and real-time updates.</p>
+                    <div class="project-tech" aria-label="Technologies used" style="display:flex;gap:0.7em;margin-top:0.5em;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" title="MongoDB" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg" alt="Socket.io" title="Socket.io" style="width:24px;">
+                    </div>
+                </div>
+                <div class="project-item" tabindex="0" data-title="E-commerce Platform" data-desc="Scalable e-commerce platform with payment integration and admin dashboard." data-link="https://github.com/johndoe/ecommerce">
+                    <h3><a href="https://github.com/johndoe/ecommerce" target="_blank">E-commerce Platform</a></h3>
+                    <p>Scalable e-commerce platform with payment integration and admin dashboard.</p>
+                    <div class="project-tech" aria-label="Technologies used" style="display:flex;gap:0.7em;margin-top:0.5em;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" title="Express" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" title="MongoDB" style="width:24px;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg" alt="Stripe" title="Stripe" style="width:24px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project Modal -->
+        <div id="project-modal" class="modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+            <div class="modal-content">
+                <span class="close-modal" tabindex="0" aria-label="Close">&times;</span>
+                <h3 id="modal-title"></h3>
+                <p id="modal-desc"></p>
+                <a id="modal-link" href="#" target="_blank" class="btn primary-btn">View Project</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Certifications Section (moved above Contact, enhanced with images) -->
+    <section id="certifications" class="section glass-section">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-list">
+                <div class="cert-card" tabindex="0">
+                    <div class="cert-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google"></div>
+                    <div class="cert-info">
+                        <h3>Google Professional Cloud Architect</h3>
+                        <span class="cert-org">Google</span>
+                        <span class="cert-year">2024</span>
+                        <p>Validated expertise in designing and managing secure, scalable cloud solutions on Google Cloud Platform.</p>
+                        <img src="https://images.credly.com/size/340x340/images/2e9e2b2a-7c1e-4e7e-8b7a-6c7e7e7e7e7e/google-cloud-architect.png" alt="Google Cloud Architect Badge" style="width:80px;margin-top:0.7em;border-radius:8px;box-shadow:0 2px 8px #5e5ee533;">
+                    </div>
+                </div>
+                <div class="cert-card" tabindex="0">
+                    <div class="cert-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" style="background:#fff; border-radius:8px; padding:4px;"></div>
+                    <div class="cert-info">
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <span class="cert-org">Amazon Web Services</span>
+                        <span class="cert-year">2023</span>
+                        <p>Demonstrated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS.</p>
+                        <img src="https://images.credly.com/size/340x340/images/1e7e7e7e-7e7e-4e7e-8b7a-6c7e7e7e7e7e/aws-certified-solutions-architect-associate.png" alt="AWS Solutions Architect Badge" style="width:80px;margin-top:0.7em;border-radius:8px;box-shadow:0 2px 8px #5e5ee533;">
+                    </div>
+                </div>
+                <div class="cert-card" tabindex="0">
+                    <div class="cert-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="background:#fff; border-radius:8px; padding:4px;"></div>
+                    <div class="cert-info">
+                        <h3>Microsoft Certified: Azure Developer Associate</h3>
+                        <span class="cert-org">Microsoft</span>
+                        <span class="cert-year">2022</span>
+                        <p>Proven skills in developing cloud applications and services on Microsoft Azure.</p>
+                        <img src="https://images.credly.com/size/340x340/images/1e7e7e7e-7e7e-4e7e-8b7a-6c7e7e7e7e7e/microsoft-certified-azure-developer-associate.png" alt="Azure Developer Badge" style="width:80px;margin-top:0.7em;border-radius:8px;box-shadow:0 2px 8px #5e5ee533;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (moved below Certifications, improved spacing) -->
+    <section id="contact" class="section glass-section contact-enhanced" aria-label="Contact" role="region">
+        <div class="container contact-container contact-enhanced-container">
+            <h2>Contact</h2>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Email"></div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Email</span>
+                        <a href="mailto:danishnaveed212@gmail.com" class="contact-card-link">danishnaveed212@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon"><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone icon" style="width:32px;height:32px;"></div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">Phone</span>
+                        <a href="tel:+92454333293" class="contact-card-link">+92 454 333293</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"></div>
+                    <div class="contact-card-info">
+                        <span class="contact-card-label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/danish-butt-b41090369/" target="_blank" class="contact-card-link">danish-butt-b41090369</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
+                    <div class="contact-card-info contact-card-info-equalheight" style="width: 180px;">
+                        <span class="contact-card-label">GitHub</span>
+                        <a href="https://github.com/DanishButt586" target="_blank" class="contact-card-link">DanishButt586</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/your_form_id" method="POST" autocomplete="off">
+                <h3>Send a Message</h3>
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn primary-btn">Send Message</button>
+                <div class="form-success" style="display:none;">Thank you! Your message has been sent.</div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Danish Butt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

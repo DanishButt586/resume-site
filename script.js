@@ -1,36 +1,113 @@
-// Mobile nav toggle with overlay and body scroll lock
+// Enhanced mobile nav toggle with improved accessibility and animations
 const navToggle = document.getElementById('nav-toggle');
 const navLinksMenu = document.getElementById('nav-links');
 const navOverlay = document.getElementById('nav-overlay');
+
+// Improved mobile navigation functions
 function closeMobileNav() {
     navLinksMenu.classList.remove('open');
+    navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('mobile-nav-open');
     if (navOverlay) navOverlay.classList.remove('open');
 }
+
+function openMobileNav() {
+    navLinksMenu.classList.add('open');
+    navToggle.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('mobile-nav-open');
+    if (navOverlay) navOverlay.classList.add('open');
+}
+
+// Enhanced navigation with touch support
 if (navToggle && navLinksMenu && navOverlay) {
     navToggle.addEventListener('click', function() {
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
         if (!expanded) {
-            navLinksMenu.classList.add('open');
-            navToggle.setAttribute('aria-expanded', 'true');
-            document.body.classList.add('mobile-nav-open');
-            navOverlay.classList.add('open');
+            openMobileNav();
         } else {
             closeMobileNav();
         }
     });
-    // Close nav on link click (mobile)
+
+    // Close nav on link click (mobile) with smooth scroll
     navLinksMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMobileNav);
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    closeMobileNav();
+                    setTimeout(() => {
+                        target.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 300);
+                }
+            } else {
+                closeMobileNav();
+            }
+        });
     });
-    // Close nav on overlay click
+
+    // Close nav on overlay click/touch
     navOverlay.addEventListener('click', closeMobileNav);
+    navOverlay.addEventListener('touchstart', closeMobileNav);
+
     // Close nav on Escape key
-    window.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && navLinksMenu.classList.contains('open')) closeMobileNav();
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && navLinksMenu.classList.contains('open')) {
+            closeMobileNav();
+        }
+    });
+
+    // Handle swipe gestures for mobile nav
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    navLinksMenu.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    navLinksMenu.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 100) { // Swipe left to close
+            closeMobileNav();
+        }
     });
 }
+
+// Enhanced scroll-based navbar behavior
+let lastScrollY = window.scrollY;
+
+function updateNavbar() {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 10) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Auto-hide navbar on scroll down (mobile)
+    if (window.innerWidth <= 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+    } else {
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollY = currentScrollY;
+}
+
+window.addEventListener('scroll', updateNavbar);
+window.addEventListener('resize', updateNavbar);
 // Certifications section entrance animation
 function revealCerts() {
     document.querySelectorAll('.cert-card').forEach(card => {
@@ -148,53 +225,337 @@ if (typedTitle) {
     setTimeout(type, 800);
 }
 
-// Animated counter
+// Enhanced animated counter with intersection observer
 document.querySelectorAll('.counter').forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-count');
-        let count = +counter.textContent;
-        if (count < target) {
-            counter.textContent = count + 1;
-            setTimeout(updateCount, 80);
-        } else {
-            counter.textContent = target;
-        }
-    };
-    updateCount();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    let count = +counter.textContent;
+                    const increment = target / 50; // Smoother animation
+                    
+                    if (count < target) {
+                        counter.textContent = Math.ceil(count + increment);
+                        setTimeout(updateCount, 40);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(counter);
 });
 
-// Project Modal
+// Enhanced skill bar animations with intersection observer
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-level');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillLevel = entry.target;
+                const width = skillLevel.getAttribute('data-label');
+                skillLevel.style.width = width;
+                observer.unobserve(skillLevel);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    skillBars.forEach(bar => {
+        bar.style.width = '0%';
+        observer.observe(bar);
+    });
+}
+
+// Enhanced viewport-based animations
+function enhancedRevealAnimations() {
+    const elements = document.querySelectorAll('.section, .timeline-item, .cert-card, .project-item, .skill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible', 'reveal');
+                // Add stagger effect for child elements
+                const children = entry.target.querySelectorAll('.skill, .project-item, .timeline-item, .cert-card');
+                children.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.classList.add('visible', 'reveal');
+                    }, index * 100);
+                });
+            }
+        });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '-50px'
+    });
+    
+    elements.forEach(el => observer.observe(el));
+}
+
+// Enhanced touch and gesture support
+function addTouchSupport() {
+    let startY = 0;
+    let endY = 0;
+    
+    // Pull-to-refresh like gesture for back to top
+    document.addEventListener('touchstart', e => {
+        startY = e.touches[0].clientY;
+    });
+    
+    document.addEventListener('touchend', e => {
+        endY = e.changedTouches[0].clientY;
+        
+        // If swiped up significantly and at bottom of page
+        if (startY - endY > 100 && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+}
+
+// Enhanced modal support removed - using consolidated modal handling below
+
+// Initialize all enhanced features
+document.addEventListener('DOMContentLoaded', () => {
+    animateSkillBars();
+    enhancedRevealAnimations();
+    addTouchSupport();
+    
+    // Add smooth scrolling for better UX
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Track resume downloads
+    const downloadLinks = document.querySelectorAll('a[download]');
+    downloadLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Track download event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    event_category: 'Resume',
+                    event_label: 'PDF Download',
+                    value: 1
+                });
+            }
+            console.log('Resume download tracked');
+        });
+    });
+    
+    // Track contact form interactions
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'contact_form_submit', {
+                    event_category: 'Contact',
+                    event_label: 'Form Submission'
+                });
+            }
+        });
+    }
+    
+    // Track project modal views
+    document.querySelectorAll('.project-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const projectTitle = item.getAttribute('data-title');
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'project_view', {
+                    event_category: 'Projects',
+                    event_label: projectTitle
+                });
+            }
+        });
+    });
+    
+    // Add resize handler for responsive adjustments
+    window.addEventListener('resize', debounce(() => {
+        // Recalculate animations on resize
+        if (window.innerWidth !== window.innerWidth) {
+            location.reload();
+        }
+    }, 250));
+    
+    // Add performance optimization
+    if ('IntersectionObserver' in window) {
+        // Use modern intersection observer
+        console.log('Using optimized animations');
+    } else {
+        // Fallback for older browsers
+        console.log('Using fallback animations');
+        window.addEventListener('scroll', debounce(enhancedRevealAnimations, 16));
+    }
+    
+    // Performance monitoring
+    if ('performance' in window) {
+        window.addEventListener('load', () => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+            
+            // Track performance if analytics is available
+            if (typeof gtag !== 'undefined' && loadTime > 0) {
+                gtag('event', 'timing_complete', {
+                    name: 'load',
+                    value: Math.round(loadTime)
+                });
+            }
+            
+            console.log(`Page load time: ${loadTime}ms`);
+        });
+    }
+});
+
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Project Modal with scroll position preservation
 const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalLink = document.getElementById('modal-link');
-const closeModal = document.querySelector('.close-modal');
+const closeModalBtn = document.querySelector('.close-modal');
+let savedScrollPosition = 0;
+
+// Function to preserve scroll position
+function lockBodyScroll() {
+    try {
+        savedScrollPosition = window.scrollY;
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollPosition}px`;
+        document.body.style.width = '100%';
+        document.body.style.left = '0';
+    } catch (error) {
+        console.error('Error locking body scroll:', error);
+        // Fallback: just hide overflow
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function unlockBodyScroll() {
+    try {
+        const scrollY = savedScrollPosition;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.overflow = '';
+        document.body.style.width = '';
+        document.body.style.left = '';
+        
+        // Disable smooth scrolling temporarily to prevent conflicts
+        const originalBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        // Use double requestAnimationFrame for reliable DOM update
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                window.scrollTo(0, scrollY);
+                // Restore smooth scrolling after a short delay
+                setTimeout(() => {
+                    document.documentElement.style.scrollBehavior = originalBehavior;
+                }, 50);
+            });
+        });
+    } catch (error) {
+        console.error('Error unlocking body scroll:', error);
+        // Fallback: just restore overflow
+        document.body.style.overflow = '';
+    }
+}
+
+function closeProjectModal() {
+    if (modal) {
+        modal.style.display = 'none';
+        unlockBodyScroll();
+    }
+}
+
 document.querySelectorAll('.project-item').forEach(item => {
     item.addEventListener('click', () => {
         modalTitle.textContent = item.getAttribute('data-title');
         modalDesc.textContent = item.getAttribute('data-desc');
-        modalLink.href = item.getAttribute('data-link');
+        
+        // Update modal header icons for each project
+        const modalHeader = modal.querySelector('.project-modal-header');
+        const modalTitleElem = modal.querySelector('#modal-title');
+        
+        // Remove any previous IMS icons before the title
+        const prevIcons = modal.querySelector('.ims-icons-before-title');
+        if (prevIcons) prevIcons.remove();
+        
+        if (modalTitle.textContent.includes('Food Delivery App')) {
+            modalLink.href = 'https://github.com/DanishButt586/Food-Application/tree/main';
+            modalHeader.innerHTML = `
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" style="width:40px;margin-right:10px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" style="width:40px;margin-right:10px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" style="width:40px;margin-right:10px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Maps" style="width:40px;vertical-align:middle;">
+            `;
+        } else if (modalTitle.textContent.includes('Inventory Management System')) {
+            modalLink.href = 'https://github.com/DanishButt586/Inventory-Management-System';
+            modalHeader.innerHTML = '';
+            // Add IMS icons before the modal title
+            const iconsDiv = document.createElement('div');
+            iconsDiv.className = 'ims-icons-before-title';
+            iconsDiv.style = 'display:flex;gap:10px;margin:0 0 10px 0;justify-content:center;';
+            iconsDiv.innerHTML = `
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" style="width:36px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="WPF" style="width:36px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" style="width:36px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio" style="width:36px;vertical-align:middle;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" style="width:36px;vertical-align:middle;">
+            `;
+            modalTitleElem.parentNode.insertBefore(iconsDiv, modalTitleElem);
+        } else {
+            modalLink.href = item.getAttribute('data-link') || '#';
+            modalHeader.innerHTML = '';
+        }
+        
+        // Lock scroll and show modal
+        lockBodyScroll();
         modal.style.display = 'flex';
         modal.focus();
     });
+    
     item.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
             item.click();
         }
     });
 });
-if (closeModal) {
-    closeModal.addEventListener('click', () => modal.style.display = 'none');
-    closeModal.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') modal.style.display = 'none';
+
+// Close modal event listeners
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeProjectModal);
+    closeModalBtn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') closeProjectModal();
     });
 }
+
+// Close on escape key
 window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.style.display === 'flex') modal.style.display = 'none';
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+        closeProjectModal();
+    }
 });
-modal && modal.addEventListener('click', e => {
-    if (e.target === modal) modal.style.display = 'none';
-});
+
+// Close on backdrop click
+if (modal) {
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeProjectModal();
+    });
+}
 
 // Animated timeline reveal
 function revealTimeline() {

@@ -153,7 +153,7 @@ document.querySelectorAll('.project-item').forEach(card => {
 });
 
 // Contact social icon hover animation
-document.querySelectorAll('.social-links a img').forEach(icon => {
+document.querySelectorAll('.social-links a img, .contact-card-icon img').forEach(icon => {
     icon.addEventListener('mouseenter', () => {
         icon.style.transform = 'scale(1.22) rotate(-8deg)';
     });
@@ -626,6 +626,35 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Keyboard navigation for navbar links (arrow keys)
+const navLinks = document.querySelectorAll('.nav-links a');
+if (navLinks.length) {
+    navLinks.forEach((link, idx) => {
+        link.setAttribute('tabindex', '0');
+        link.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                navLinks[(idx + 1) % navLinks.length].focus();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                navLinks[(idx - 1 + navLinks.length) % navLinks.length].focus();
+            }
+        });
+    });
+}
+
+// Keyboard accessibility for interactive cards (Enter/Space triggers click)
+['.project-item', '.cert-card', '.contact-card'].forEach(selector => {
+    document.querySelectorAll(selector).forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+});
 
 // Animate skill bars on scroll into view
 // Remove JS-driven skill bar animation. Let CSS handle bar fill only.
@@ -686,3 +715,14 @@ if (contactForm) {
         });
     });
 }
+
+// Contact card icon click state
+
+document.querySelectorAll('.contact-card').forEach(card => {
+    card.addEventListener('click', function() {
+        // Remove 'active' from all cards
+        document.querySelectorAll('.contact-card').forEach(c => c.classList.remove('active'));
+        // Add 'active' to the clicked card
+        card.classList.add('active');
+    });
+});

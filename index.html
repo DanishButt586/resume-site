@@ -76,6 +76,32 @@
     <div class="animated-bg" aria-hidden="true"></div>
     <!-- Hero Banner Background -->
     <div class="hero-banner" aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 100vw; height: 340px; background: linear-gradient(120deg, #5e5ee5 0%, #b3b3ff 100%); opacity: 0.18; z-index: 0; border-bottom-left-radius: 48px; border-bottom-right-radius: 48px; box-shadow: 0 8px 32px #5e5ee522;"></div>
+    <!-- Unique SVG Wave Divider for Hero Section -->
+    <div class="hero-wave-divider" aria-hidden="true" style="position: absolute; top: 320px; left: 0; width: 100vw; height: 60px; z-index: 1; pointer-events: none;">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+        <path d="M0,30 Q360,60 720,30 T1440,30 V60 H0 Z" fill="#5e5ee5" fill-opacity="0.18"/>
+        <path d="M0,40 Q360,20 720,40 T1440,40 V60 H0 Z" fill="#b3b3ff" fill-opacity="0.12"/>
+      </svg>
+    </div>
+
+    <!-- Section SVG Pattern Backgrounds -->
+    <style>
+      .section, .glass-section {
+        position: relative;
+        z-index: 2;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .section::before, .glass-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 0;
+        opacity: 0.08;
+        pointer-events: none;
+        background-image: url('data:image/svg+xml;utf8,<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="160" cy="160" r="140" fill="%235e5ee5" fill-opacity="0.08"/><rect x="40" y="40" width="60" height="60" rx="12" fill="%23b3b3ff" fill-opacity="0.08"/><rect x="220" y="220" width="40" height="40" rx="8" fill="%235e5ee5" fill-opacity="0.08"/></svg>');
+      }
+    </style>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
